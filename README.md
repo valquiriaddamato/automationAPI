@@ -13,7 +13,7 @@ npm install -g newman
 2. Change directory to "C:\automationAPI\collections"
 3. Run the newman command:
 ```sh
-run automationAPI.postman_collection.json -e environmentAutomationAPI.postman_environment.json --reporters cli,json --reporter-json-export C:\automationAPI\reports\reportsAutomationAPI.json
+newman run automationAPI.postman_collection.json -e environmentAutomationAPI.postman_environment.json --reporters cli,json --reporter-json-export C:\automationAPI\reports\reportsAutomationAPI.json
 ```
 
 #### View BDDS
