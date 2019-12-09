@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "d198f8a5-2ff0-472d-bb21-5ca0fb6ac929",
+		"name": "AutomationAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "RegisterUserSuccessfully",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eca2621-dfce-4609-8178-07efe914f906",
+								"exec": [
+									"pm.test(\"Successfully registered user\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"User data successfully returned\", function () {",
+									"    pm.response.to.have.body('{\"ID\":20,\"UserName\":\"Val\",\"Password\":\"123456\"}');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 20,\r\n  \"UserName\": \"Val\",\r\n  \"Password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Base}}/api/Users",
+							"host": [
+								"{{URL_Base}}"
+							],
+							"path": [
+								"api",
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ViewUserSuccessfully",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eca2621-dfce-4609-8178-07efe914f906",
+								"exec": [
+									"pm.test(\"Successfully View user\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"User data successfully returned\", function () {",
+									"    pm.response.to.have.body('{\"ID\":1,\"UserName\":\"User 1\",\"Password\":\"Password1\"}');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 20,\r\n  \"UserName\": \"Val\",\r\n  \"Password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Base}}/api/Users/1",
+							"host": [
+								"{{URL_Base}}"
+							],
+							"path": [
+								"api",
+								"Users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "RegisterBookSuccessfully",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eca2621-dfce-4609-8178-07efe914f906",
+								"exec": [
+									"pm.test(\"Successfully registered book\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Book data successfully returned\", function () {",
+									"    pm.response.to.have.body('{\"ID\":1,\"Title\":\"Val\",\"Description\":\"Interesting book\",\"PageCount\":200,\"Excerpt\":\"interesting book summary\",\"PublishDate\":\"2018-10-10T09:17:55.939Z\"}');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 1,\r\n  \"Title\": \"Val\",\r\n  \"Description\": \"Interesting book\",\r\n  \"PageCount\": 200,\r\n  \"Excerpt\": \"interesting book summary\",\r\n  \"PublishDate\": \"2018-10-10T09:17:55.939Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Base}}/api/Books",
+							"host": [
+								"{{URL_Base}}"
+							],
+							"path": [
+								"api",
+								"Books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ViewBookSuccessfully",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eca2621-dfce-4609-8178-07efe914f906",
+								"exec": [
+									"pm.test(\"Successfully View user\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 1\"');",
+									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 2\"');",
+									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 4\"');",
+									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 6\"');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 20,\r\n  \"UserName\": \"Val\",\r\n  \"Password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Base}}/api/Books",
+							"host": [
+								"{{URL_Base}}"
+							],
+							"path": [
+								"api",
+								"Books"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
