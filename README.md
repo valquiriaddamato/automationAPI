@@ -2,9 +2,9 @@
 
 #### Prerequisites
 - Have node.js installed on the machine
-- Have newman installed on the machine, just run the command:
+- Have newman installed on the machine, just run the command in node.js cmd:
 ```sh
-npm install -g newman no cmd do node.js
+npm install -g newman
 ```
 - Download the project to the machine in directory "C:"
 
