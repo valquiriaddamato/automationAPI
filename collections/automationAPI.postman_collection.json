@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d198f8a5-2ff0-472d-bb21-5ca0fb6ac929",
+		"_postman_id": "370c193c-808f-4fe9-b632-e018b87a25dd",
 		"name": "AutomationAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,14 +14,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4eca2621-dfce-4609-8178-07efe914f906",
 								"exec": [
 									"pm.test(\"Successfully registered user\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"User data successfully returned\", function () {",
-									"    pm.response.to.have.body('{\"ID\":20,\"UserName\":\"Val\",\"Password\":\"123456\"}');",
+									"pm.test(\"User data successfully created\", function () {",
+									"    pm.response.to.have.body('{\"id\":20,\"userName\":\"Val\",\"password\":\"123456\"}');",
 									"});",
 									""
 								],
@@ -49,12 +48,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL_Base}}/api/Users",
+							"raw": "{{URL_Base}}/api/v1/Users",
 							"host": [
 								"{{URL_Base}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"Users"
 							]
 						}
@@ -67,14 +67,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4eca2621-dfce-4609-8178-07efe914f906",
 								"exec": [
-									"pm.test(\"Successfully View user\", function () {",
+									"pm.test(\"Successfully view user\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
 									"pm.test(\"User data successfully returned\", function () {",
-									"    pm.response.to.have.body('{\"ID\":1,\"UserName\":\"User 1\",\"Password\":\"Password1\"}');",
+									"    pm.response.to.have.body('{\"id\":1,\"userName\":\"User 1\",\"password\":\"Password1\"}');",
 									"});",
 									""
 								],
@@ -82,9 +81,6 @@
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -95,22 +91,14 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"ID\": 20,\r\n  \"UserName\": \"Val\",\r\n  \"Password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{URL_Base}}/api/Users/1",
+							"raw": "{{URL_Base}}/api/v1/Users/1",
 							"host": [
 								"{{URL_Base}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"Users",
 								"1"
 							]
@@ -118,8 +106,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Books",
@@ -130,14 +117,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4eca2621-dfce-4609-8178-07efe914f906",
 								"exec": [
 									"pm.test(\"Successfully registered book\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"Book data successfully returned\", function () {",
-									"    pm.response.to.have.body('{\"ID\":1,\"Title\":\"Val\",\"Description\":\"Interesting book\",\"PageCount\":200,\"Excerpt\":\"interesting book summary\",\"PublishDate\":\"2018-10-10T09:17:55.939Z\"}');",
+									"pm.test(\"Book data successfully created\", function () {",
+									"    pm.response.to.have.body('{\"id\":1,\"title\":\"Val\",\"description\":\"Interesting book\",\"pageCount\":200,\"excerpt\":\"interesting book summary\",\"publishDate\":\"2018-10-10T09:17:55.939Z\"}');",
 									"});",
 									""
 								],
@@ -165,12 +151,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL_Base}}/api/Books",
+							"raw": "{{URL_Base}}/api/v1/Books",
 							"host": [
 								"{{URL_Base}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"Books"
 							]
 						}
@@ -183,26 +170,22 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4eca2621-dfce-4609-8178-07efe914f906",
 								"exec": [
-									"pm.test(\"Successfully View user\", function () {",
+									"pm.test(\"Successfully view books\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"Body matches string\", function () {",
-									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 1\"');",
-									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 2\"');",
-									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 4\"');",
-									"    pm.expect(pm.response.text()).to.include('\"Title\":\"Book 6\"');",
+									"pm.test(\"Books data successfully returned\", function () {",
+									"    pm.expect(pm.response.text()).to.include('\"title\":\"Book 1\"');",
+									"    pm.expect(pm.response.text()).to.include('\"title\":\"Book 2\"');",
+									"    pm.expect(pm.response.text()).to.include('\"title\":\"Book 4\"');",
+									"    pm.expect(pm.response.text()).to.include('\"title\":\"Book 6\"');",
 									"});"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -213,31 +196,21 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"ID\": 20,\r\n  \"UserName\": \"Val\",\r\n  \"Password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{URL_Base}}/api/Books",
+							"raw": "{{URL_Base}}/api/v1/Books",
 							"host": [
 								"{{URL_Base}}"
 							],
 							"path": [
 								"api",
+								"v1",
 								"Books"
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
